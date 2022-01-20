@@ -12,3 +12,6 @@ This Project is intended as test case development framework to practice writing 
     
  Feel free to run the automation or add more tests
  ~S
+
+
+[![Project1](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/oardfw&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/oardfw/runs)
