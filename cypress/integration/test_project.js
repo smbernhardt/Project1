@@ -1,4 +1,4 @@
- ///<reference types="cypress" />
+
 
 
 it('login test', function() {
@@ -23,7 +23,7 @@ it('login test', function() {
 })
 
 
-it.only('edit store info', function() {
+it('edit store info', function() {
 
     cy.visit('https://www.opencart.com')
     cy.get('.btn-link').click()
