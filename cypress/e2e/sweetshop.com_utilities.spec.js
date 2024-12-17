@@ -57,6 +57,14 @@ Cypress.Commands.add('waitForResponse', (alias) => {
 })
 
 describe('Sweetshop.com Utilities', () => {
+    let testData;
+
+    before(() => {
+        cy.fixture('data_fixture.json').then((data) => {
+            testData = data;
+        });
+    });
+
     beforeEach(() => {
         cy.viewport(viewports.desktop[0], viewports.desktop[1])
         cy.visit('https://sweetshop.com')
@@ -87,14 +95,9 @@ describe('Sweetshop.com Utilities', () => {
     })
 
     it('should validate email format in forms', () => {
-        const testEmails = {
-            valid: ['test@example.com', 'test.user@domain.co.uk'],
-            invalid: ['test@', 'test@.com', 'test@domain', 'test.com']
-        }
-
         cy.get('#newsletter-form').within(() => {
             // Test valid emails
-            testEmails.valid.forEach(email => {
+            testData.formData.validEmails.forEach(email => {
                 cy.get('#email')
                     .clear()
                     .type(email)
@@ -103,7 +106,7 @@ describe('Sweetshop.com Utilities', () => {
             })
 
             // Test invalid emails
-            testEmails.invalid.forEach(email => {
+            testData.formData.invalidEmails.forEach(email => {
                 cy.get('#email')
                     .clear()
                     .type(email)
@@ -114,13 +117,10 @@ describe('Sweetshop.com Utilities', () => {
     })
 
     it('should handle pagination utilities', () => {
-        // Test page size options
-        const pageSizes = [12, 24, 48]
-        
-        pageSizes.forEach(size => {
+        testData.pageSizes.forEach(size => {
             cy.get('#page-size-select').select(size.toString())
-            cy.waitForLoader() // Add loader wait
-            waitHelpers.waitForNetworkIdle() // Add network wait
+            cy.waitForLoader()
+            waitHelpers.waitForNetworkIdle()
             cy.get('.product-card')
                 .should('have.length', size)
             cy.url().should('include', `page_size=${size}`)

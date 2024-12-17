@@ -1,3 +1,12 @@
 {
-    "circleci-vscode.apiToken": "b2d6b8e578b79eebce5143e777de0086da1a9299"
+    "circleci-vscode.apiToken": "b2d6b8e578b79eebce5143e777de0086da1a9299",
+    "cypress-cucumber-preprocessor": {
+        "nonGlobalStepDefinitions": true
+    },
+    "editor.formatOnSave": true,
+    "cypress.defaultCommandTimeout": 10000,
+    "cypress.requestTimeout": 10000,
+    "cypress.responseTimeout": 30000,
+    "cypress.pageLoadTimeout": 60000,
+    "cypress.numTestsKeptInMemory": 50
 }

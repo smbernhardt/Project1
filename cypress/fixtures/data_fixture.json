@@ -1,0 +1,72 @@
+{
+  "testUsers": {
+    "standard": {
+      "email": "test@example.com",
+      "password": "Test123!",
+      "firstName": "Test",
+      "lastName": "User",
+      "address": "123 Test St",
+      "phone": "1234567890"
+    },
+    "admin": {
+      "email": "admin@example.com",
+      "password": "Admin123!"
+    }
+  },
+  "products": {
+    "featured": [
+      {
+        "id": 1,
+        "name": "Dark Chocolate Bar",
+        "price": 5.99,
+        "category": "chocolate",
+        "inStock": true
+      },
+      {
+        "id": 2,
+        "name": "Gummy Bears",
+        "price": 3.99,
+        "category": "gummies",
+        "inStock": true
+      }
+    ]
+  },
+  "formData": {
+    "validEmails": [
+      "test@example.com",
+      "test.user@domain.co.uk"
+    ],
+    "invalidEmails": [
+      "test@",
+      "test@.com",
+      "test@domain",
+      "test.com"
+    ],
+    "validPhones": [
+      "1234567890",
+      "123-456-7890",
+      "(123) 456-7890"
+    ],
+    "invalidPhones": [
+      "123",
+      "123456",
+      "abcdefghij"
+    ]
+  },
+  "testDates": [
+    {
+      "input": "2023-12-25",
+      "expected": "December 25, 2023"
+    },
+    {
+      "input": "2024-01-01",
+      "expected": "January 1, 2024"
+    }
+  ],
+  "pageSizes": [12, 24, 48],
+  "searchParams": {
+    "category": "chocolate",
+    "sort": "price-asc",
+    "filter": "in-stock"
+  }
+} 
