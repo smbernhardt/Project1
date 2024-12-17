@@ -4,12 +4,30 @@
   "description": "cypress test project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "test:viewport": "cypress run --spec 'cypress/e2e/sweetshop.com_viewport.spec.js'",
+    "test:assertions": "cypress run --spec 'cypress/e2e/sweetshop.com_assertions.js'",
+    "test:actions": "cypress run --spec 'cypress/e2e/sweetshop.com_actions.js'",
+    "test:utilities": "cypress run --spec 'cypress/e2e/sweetshop.com_utilities.spec.js'"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "xvfb": "^0.4.0"
+  },
+  "devDependencies": {
+    "cypress": "^12.0.0",
+    "@cypress/xpath": "^2.0.3",
+    "@testing-library/cypress": "^9.0.0",
+    "cypress-real-events": "^1.7.6",
+    "cypress-wait-until": "^1.7.2",
+    "cypress-file-upload": "^5.0.8",
+    "cypress-localstorage-commands": "^2.2.3",
+    "cypress-iframe": "^1.0.1",
+    "@4tw/cypress-drag-drop": "^2.2.3",
+    "cypress-network-idle": "^1.14.2"
   }
 }

@@ -1,13 +1,30 @@
-module.exports = {
-  watchForFileChanges: true,
-  defaultCommandTimeout: 5000,
-  projectId: 'cw3owu',
+const { defineConfig } = require('cypress')
+
+module.exports = defineConfig({
   e2e: {
-    // We've imported your old cypress plugins here.
-    // You may want to clean this up later by importing these.
     setupNodeEvents(on, config) {
-      return require('./cypress/plugins/index.js')(on, config)
+      // implement node event listeners here
     },
-    specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
+    baseUrl: 'https://sweetshop.com',
+    viewportWidth: 1920,
+    viewportHeight: 1080,
+    defaultCommandTimeout: 10000,
+    requestTimeout: 10000,
+    responseTimeout: 30000,
+    pageLoadTimeout: 60000,
+    video: false,
+    screenshotOnRunFailure: true,
+    chromeWebSecurity: false,
+    retries: {
+      runMode: 2,
+      openMode: 0
+    }
   },
-}
+  env: {
+    // Environment variables for different test types
+    VIEWPORT_TESTS: true,
+    ACTION_TESTS: true,
+    ASSERTION_TESTS: true,
+    UTILITY_TESTS: true
+  }
+})

@@ -1,7 +1,7 @@
-d// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.224.2/containers/javascript-node
 {
-	"name": "Node.js",
+	"name": "Cypress Testing Environment",
 	"build": {
 		"dockerfile": "Dockerfile",
 		// Update 'VARIANT' to pick a Node version: 16, 14, 12.
@@ -10,23 +10,54 @@ d// For format details, see https://aka.ms/devcontainer.json. For config options
 		"args": { "VARIANT": "16-bullseye" }
 	},
 
-	// Set *default* container specific settings.json values on container create.
-	"settings": {},
-
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		"dbaeumer.vscode-eslint"
-	],
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"forwardPorts": [3000],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "yarn install",
+	"postCreateCommand": "npm install",
 
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "node",
 	"features": {
-		"docker-in-docker": "latest"
+		"docker-in-docker": "latest",
+		"git": "latest",
+		"github-cli": "latest"
+	},
+	"mounts": [
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"
+	],
+	"containerEnv": {
+		"CYPRESS_CACHE_FOLDER": "/home/node/.cache/Cypress"
+	},
+	"runArgs": [
+		"--security-opt", "seccomp=unconfined",
+		"--cap-add=SYS_ADMIN"
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"shelex.vscode-cy-helper",
+				"cypress-io.cypress",
+				"esbenp.prettier-vscode",
+				"streetsidesoftware.code-spell-checker"
+			],
+			"settings": {
+				"terminal.integrated.shell.linux": "/bin/bash",
+				"editor.formatOnSave": true,
+				"cypress.defaultCommandTimeout": 10000,
+				"cypress.requestTimeout": 10000,
+				"cypress.responseTimeout": 30000,
+				"cypress.pageLoadTimeout": 60000,
+				"cypress.numTestsKeptInMemory": 50,
+				"files.autoSave": "afterDelay",
+				"editor.codeActionsOnSave": {
+					"source.fixAll.eslint": true
+				},
+				"editor.defaultFormatter": "esbenp.prettier-vscode",
+				"prettier.singleQuote": true,
+				"prettier.trailingComma": "es5"
+			}
+		}
 	}
 }
