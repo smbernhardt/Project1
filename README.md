@@ -1,8 +1,10 @@
 # Project1
 
-This Project is intended as test case development framework to practice writing tests on the sandbox for www.opencart.com
--It is intended as a basic dataloader with several assertions to verify text, radio buttons, drop down menus, submission and resubmission
--It follows the basic cypress development style to define test cases and assertions:
+This Project is intended as test case development framework to practice writing tests on the sandbox for www.sweetshop.com
+--contains basic cypress tests for login, logout, and product search
+--contains xvfb to run tests in headless mode
+--contains a basic dataloader with several assertions to verify text, radio buttons, drop down menus, submission and resubmission
+--contains a basic cypress development style to define test cases and assertions:
     it('login test', function() {
       Cy.get
     })
