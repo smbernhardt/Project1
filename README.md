@@ -1,6 +1,6 @@
 # Project1
 
-This Project is intended as test case development framework to practice writing tests on the sandbox for www.sweetshop.com
+This Project is intended as test case development framework with an automation suite sandbox written for www.sweetshop.com
 --contains basic cypress tests for login, logout, and product search
 --contains xvfb to run tests in headless mode
 --contains a basic dataloader with several assertions to verify text, radio buttons, drop down menus, submission and resubmission
